@@ -1,0 +1,25 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.13.35818.85 d17.13
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Mecanica_Foix", "Mecanica_Foix\Mecanica_Foix.csproj", "{FC06F1B3-F7F6-4345-9EA0-2F5F30419C5F}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{FC06F1B3-F7F6-4345-9EA0-2F5F30419C5F}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{FC06F1B3-F7F6-4345-9EA0-2F5F30419C5F}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{FC06F1B3-F7F6-4345-9EA0-2F5F30419C5F}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{FC06F1B3-F7F6-4345-9EA0-2F5F30419C5F}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {0C1890E3-5932-4CB6-B2E7-007940FE4B19}
+	EndGlobalSection
+EndGlobal
