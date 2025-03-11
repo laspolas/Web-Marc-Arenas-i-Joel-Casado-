@@ -1,0 +1,132 @@
+body {
+    font-family: Arial, sans-serif;
+    background-color: #121212;
+    color: #fff;
+    margin: 0;
+    padding: 0;
+}
+
+.container {
+    width: 90%;
+    margin: auto;
+    text-align: center;
+}
+
+.header {
+    background: #ff4d4d;
+    padding: 20px;
+    font-size: 24px;
+    font-weight: bold;
+    text-transform: uppercase;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.3);
+}
+
+.hero h2 {
+    font-size: 32px;
+    margin-top: 20px;
+    animation: fade-in 1s ease-in;
+}
+
+.hero p {
+    font-size: 18px;
+    color: #aaa;
+}
+
+.nav {
+    margin: 20px 0;
+}
+
+.btn-categoria {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px 20px;
+    margin: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+    .btn-categoria:hover, .btn-categoria.active {
+        background: #ff1a1a;
+        transform: scale(1.1);
+    }
+
+.productos {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 20px;
+    margin-top: 20px;
+    justify-content: center;
+}
+
+.producto {
+    background: #1e1e1e;
+    padding: 15px;
+    border-radius: 10px;
+    box-shadow: 0 4px 8px rgba(255, 77, 77, 0.3);
+    transition: transform 0.3s;
+    text-align: center;
+    width: 280px; /* Tamaño fijo para todos los productos */
+    height: 500px; /* Mayor altura para incluir todo de manera uniforme */
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
+}
+
+    .producto:hover {
+        transform: translateY(-5px);
+    }
+
+.producto-img, .producto-video {
+    width: 250px; /* Tamaño fijo */
+    height: 180px; /* Tamaño fijo */
+    border-radius: 10px;
+    object-fit: cover; /* Evita que la imagen o video se deforme */
+}
+
+.producto-info {
+    flex-grow: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    min-height: 80px; /* Asegura que el título no mueva los elementos */
+}
+
+.precio {
+    color: #ff4d4d;
+    font-weight: bold;
+    font-size: 18px; /* Tamaño fijo */
+}
+
+.btn-carrito {
+    background: #ff4d4d;
+    color: white;
+    border: none;
+    padding: 10px;
+    width: 100%;
+    border-radius: 5px;
+    margin-top: 10px;
+    cursor: pointer;
+    transition: 0.3s;
+}
+
+    .btn-carrito:hover {
+        background: #ff1a1a;
+        transform: scale(1.05);
+    }
+
+/* Animaciones */
+@keyframes fade-in {
+    from {
+        opacity: 0;
+        transform: translateY(-10px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}

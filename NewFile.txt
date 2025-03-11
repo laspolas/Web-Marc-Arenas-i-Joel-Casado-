@@ -1,0 +1,87 @@
+﻿@{
+    ViewData["Title"] = "Home Page";
+    
+    var productos = new List<dynamic>
+    {
+        new { Id = 1, Nombre = "Máquina de alineación", Precio = "€2,500", Imagen = "/alineacion.jpg", Video = "/alineacion.mp4", Categoria = "Corrección" },
+        new { Id = 2, Nombre = "Banco de enderezado", Precio = "€7,800", Imagen = "/enderezado.jpg", Video = "/enderezado.mp4", Categoria = "Corrección" },
+        new { Id = 3, Nombre = "Escáner de diagnóstico", Precio = "€1,200", Imagen = "/scanner.jpg", Video = "/scanner.mp4", Categoria = "Diagnóstico" },
+        new { Id = 4, Nombre = "Medidor electrónico de chasis", Precio = "€4,500", Imagen = "/medidor.jpg", Video = "/medidor.mp4", Categoria = "Medición" },
+        new { Id = 5, Nombre = "Sistema de medición 3D", Precio = "€9,000", Imagen = "/medicion3d.jpg", Video = "/medicion3d.mp4", Categoria = "Medición" },
+        new { Id = 6, Nombre = "Sistema de medición por láser", Precio = "€7,200", Imagen = "/medicion_laser.jpg", Video = "/medicion_laser.mp4", Categoria = "Medición" },
+        new { Id = 7, Nombre = "Sistema de medición acústico", Precio = "€6,800", Imagen = "/medicion_acustico.jpg", Video = "/medicion_acustico.mp4", Categoria = "Medición" },
+        new { Id = 8, Nombre = "Compás de varas", Precio = "€500", Imagen = "/compas_varas.jpg", Video = "/compas_varas.mp4", Categoria = "Medición" },
+        new { Id = 9, Nombre = "Compás digital", Precio = "€750", Imagen = "/compas_digital.jpg", Video = "/compas_digital.mp4", Categoria = "Medición" },
+        new { Id = 10, Nombre = "Galgas de nivel", Precio = "€300", Imagen = "/galgas_nivel.jpg", Video = "/galgas_nivel.mp4", Categoria = "Medición" }
+    };
+
+    var categoriaSeleccionada = ViewBag.CategoriaSeleccionada ?? "Todos";
+    var carrito = ViewBag.Carrito ?? new List<dynamic>();
+
+    var productosFiltrados = categoriaSeleccionada == "Todos" ? productos : productos.Where(p => p.Categoria == categoriaSeleccionada).ToList();
+}
+
+<div class="bg-black text-white min-h-screen">
+    <header class="bg-red-700 py-4 shadow-lg">
+        <div class="container mx-auto flex justify-between items-center px-6">
+            <h1 class="text-3xl font-bold">VehíTech</h1>
+        </div>
+    </header>
+
+    <section class="container mx-auto p-8 text-center">
+        <h2 class="text-5xl font-bold">Bienvenido a VehíTech</h2>
+        <p class="text-lg mt-4 max-w-2xl mx-auto">
+            Especialistas en equipos de comprobación y corrección de estructuras de vehículos.
+        </p>
+    </section>
+
+    <nav class="container mx-auto flex justify-center space-x-4 bg-gray-800 p-4 rounded-lg">
+        <form method="post">
+            <button type="submit" name="categoria" value="Diagnóstico" class="bg-red-700 text-white px-4 py-2 rounded">Diagnóstico</button>
+            <button type="submit" name="categoria" value="Corrección" class="bg-red-700 text-white px-4 py-2 rounded">Corrección</button>
+            <button type="submit" name="categoria" value="Medición" class="bg-red-700 text-white px-4 py-2 rounded">Medición</button>
+            <button type="submit" name="categoria" value="Todos" class="bg-red-700 text-white px-4 py-2 rounded">Ver Todos</button>
+        </form>
+    </nav>
+
+    <section class="container mx-auto grid grid-cols-1 md:grid-cols-3 gap-6 p-8">
+        @foreach (var producto in productosFiltrados)
+        {
+            <div class="bg-gray-800 p-4 rounded-lg shadow-lg">
+                <img src="@producto.Imagen" alt="@producto.Nombre" class="w-full h-40 object-cover rounded-md" />
+                <div class="p-4">
+                    <h3 class="text-xl font-bold mt-2 text-white">@producto.Nombre</h3>
+                    <p class="text-lg font-semibold text-red-500">@producto.Precio</p>
+                    <video controls class="w-full mt-2">
+                        <source src="@producto.Video" type="video/mp4" />
+                    </video>
+                    <form method="post">
+                        <input type="hidden" name="productoId" value="@producto.Id" />
+                        <button type="submit" class="mt-4 w-full bg-red-700 hover:bg-red-900 text-white px-4 py-2 rounded">
+                            Añadir al carrito
+                        </button>
+                    </form>
+                </div>
+            </div>
+        }
+    </section>
+
+    <div class="container mx-auto p-8">
+        <h2 class="text-2xl font-bold mb-4">Carrito de Compras</h2>
+        @if (carrito.Count == 0)
+        {
+            <p>El carrito está vacío</p>
+        }
+        else
+        {
+            <ul>
+                @foreach (var item in carrito)
+                {
+                    <li class="border-b border-gray-700 py-2">
+                        <p class="text-white font-semibold">@item.Nombre - <span class="text-red-500">@item.Precio</span></p>
+                    </li>
+                }
+            </ul>
+        }
+    </div>
+</div>

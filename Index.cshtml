@@ -1,0 +1,55 @@
+﻿@{
+    ViewData["Title"] = "VehíTech - Equipos de Mecánica";
+    var productos = ViewBag.Productos as List<dynamic>;
+    var categoriaSeleccionada = ViewBag.CategoriaSeleccionada;
+}
+
+<!-- Estilos externos -->
+<link rel="stylesheet" href="~/css/styles.css" />
+
+<div class="container">
+    <header class="header">
+        <h1>VehíTech</h1>
+    </header>
+
+    <section class="hero">
+        <h2>Bienvenido a VehíTech</h2>
+        <p>Especialistas en equipos de comprobación y corrección de estructuras de vehículos.</p>
+    </section>
+
+    <nav class="nav">
+        <form method="get" action="/">
+            @foreach (var categoria in new[] { "Todos", "Diagnóstico", "Corrección", "Medición" })
+            {
+                <button type="submit" name="categoria" value="@categoria.ToLower()"
+                        class="btn-categoria @(categoriaSeleccionada == categoria.ToLower() ? "active" : "")">
+                    @categoria
+                </button>
+            }
+        </form>
+    </nav>
+
+    <section class="productos">
+        @if (productos != null && productos.Count > 0)
+        {
+            @foreach (var producto in productos)
+            {
+                <div class="producto">
+                    <img src="@producto.Imagen" alt="@producto.Nombre" class="producto-img" />
+                    <div class="producto-info">
+                        <h3>@producto.Nombre</h3>
+                        <p class="precio">@producto.Precio</p>
+                        <video controls class="producto-video">
+                            <source src="@producto.Video" type="video/mp4" />
+                        </video>
+                        <button class="btn-carrito">Añadir al carrito</button>
+                    </div>
+                </div>
+            }
+        }
+        else
+        {
+            <p class="mensaje-vacio">No hay productos en esta categoría.</p>
+        }
+    </section>
+</div>
